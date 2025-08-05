@@ -196,16 +196,16 @@
 			console.log(num);
 			
 			$this.animateNumber(
-			
-			  {
-			
-			    number: num,
-			
-			    numberStep: comma_separator_number_step
-			
-			  }, 7000
-			
-			);
+				  {
+				    number: num,
+				    numberStep: comma_separator_number_step
+				  }, 7000,
+				  function() {
+				    if (num === 50) {
+				      $this.text('50+');
+				    }
+				  }
+				);
 			
 			});
 			
