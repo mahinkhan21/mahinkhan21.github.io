@@ -195,7 +195,7 @@
 		            // Append '+' only for Projects and Mentored Students
 		            var label = $this.closest('.text').find('span').text().trim();
 		
-		            if (label === 'Projects' || label === 'Mentored Students') {
+		            if (label === 'Mentored Students') {
 		              $this.text(num + '+');
 		            } else {
 		              $this.text(num);
