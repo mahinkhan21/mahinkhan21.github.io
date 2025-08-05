@@ -404,14 +404,6 @@ mark,
   max-width: 100%;
   height: auto; }
 
-.counter-wrapper {
-  white-space: nowrap;
-}
-
-.counter-wrapper .plus {
-  font-weight: bold;
-}
-
 
 .figure {
   display: inline-block; }
