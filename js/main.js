@@ -200,14 +200,18 @@
 				    number: num,
 				    numberStep: comma_separator_number_step
 				  }, 7000,
-				  function() {
-				    if (num === 50) {
-				      $this.text('50+');
-				    }
-				  }
-				);
-			
-			});
+		          function () {
+		            // After animation completes
+		            if (num === 50) {
+		              $this.text('50+');
+		            } else if (num === 10) {
+		              $this.text('10+');
+		            } else {
+		              $this.text(num); // fallback (optional)
+		            }
+		          }
+		        );
+		      });
 			
 			
 			}
