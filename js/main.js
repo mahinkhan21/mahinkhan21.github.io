@@ -182,15 +182,26 @@
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
 
 				var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+				
 				$('.number').each(function(){
 					var $this = $(this),
 						num = $this.data('number');
 						console.log(num);
+
 					$this.animateNumber(
-					  {
-					    number: num,
-					    numberStep: comma_separator_number_step
-					  }, 7000
+					  {
+					    number: num,
+					    // MODIFIED numberStep FUNCTION
+					    numberStep: function(now, tween) {
+					        var targetNum = tween.options.number;
+					        var formattedNow = comma_separator_number_step(now, tween);
+					        if (now === targetNum) {
+					            $(tween.elem).text(formattedNow + '+');
+					        } else {
+					            $(tween.elem).text(formattedNow);
+					        }
+					    }
+					  }, 7000
 					);
 				});
 				
