@@ -192,7 +192,14 @@ var counter = function () {
           },
           7000,
           function () {
-            $this.text(num + '+'); // Always append '+' after animation
+            // Append '+' only for Projects and Mentored Students
+            var label = $this.closest('.text').find('span').text().trim();
+
+            if (label === 'Mentored Students') {
+              $this.text(num + '+');
+            } else {
+              $this.text(num);
+            }
           }
         );
       });
@@ -202,6 +209,7 @@ var counter = function () {
 };
 
 counter();
+
 
 
 
