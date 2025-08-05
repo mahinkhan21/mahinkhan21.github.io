@@ -175,40 +175,34 @@
 
 	
 
-		var counter = function () {
-		  $('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint(function (direction) {
-		    if (direction === 'down' && !$(this.element).hasClass('ftco-animated')) {
-		
-		      var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
-		
-		      $('.number').each(function () {
-		        var $this = $(this),
-		            num = $this.data('number');
-		
-		        $this.animateNumber(
-		          {
-		            number: num,
-		            numberStep: comma_separator_number_step
-		          },
-		          7000,
-		          function () {
-		            // Append '+' only for Projects and Mentored Students
-		            var label = $this.closest('.text').find('span').text().trim();
-		
-		            if (label === 'Mentored Students') {
-		              $this.text(num + '+');
-		            } else {
-		              $this.text(num);
-		            }
-		          }
-		        );
-		      });
-		
-		    }
-		  }, { offset: '95%' });
-		};
-		
-		counter();
+var counter = function () {
+  $('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint(function (direction) {
+    if (direction === 'down' && !$(this.element).hasClass('ftco-animated')) {
+
+      var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+
+      $('.number').each(function () {
+        var $this = $(this),
+            num = $this.data('number');
+
+        $this.animateNumber(
+          {
+            number: num,
+            numberStep: comma_separator_number_step
+          },
+          7000,
+          function () {
+            $this.text(num + '+'); // Always append '+' after animation
+          }
+        );
+      });
+
+    }
+  }, { offset: '95%' });
+};
+
+counter();
+
 
 
 	var contentWayPoint = function() {
