@@ -175,56 +175,40 @@
 
 	
 
-	var counter = function() {
+		var counter = function () {
+		  $('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint(function (direction) {
+		    if (direction === 'down' && !$(this.element).hasClass('ftco-animated')) {
 		
-		$('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint( function( direction ) {
-
-
-
-			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-			
-			
-			
-			var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-			
-			$('.number').each(function(){
-			
-			var $this = $(this),
-			
-			num = $this.data('number');
-			
-			console.log(num);
-			
-			$this.animateNumber(
-				  {
-				    number: num,
-				    numberStep: comma_separator_number_step
-				  }, 7000,
+		      var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+		
+		      $('.number').each(function () {
+		        var $this = $(this),
+		            num = $this.data('number');
+		
+		        $this.animateNumber(
+		          {
+		            number: num,
+		            numberStep: comma_separator_number_step
+		          },
+		          7000,
 		          function () {
-		            // After animation completes
-		            if (num === 50) {
-		              $this.text('50+');
-		            } if (num === 10) {
-		              $this.text('10+');
+		            // Append '+' only for Projects and Mentored Students
+		            var label = $this.closest('.text').find('span').text().trim();
+		
+		            if (label === 'Projects' || label === 'Mentored Students') {
+		              $this.text(num + '+');
 		            } else {
-		              $this.text(num); // fallback (optional)
+		              $this.text(num);
 		            }
 		          }
 		        );
 		      });
-			
-			
-			}
-			
-			
-			
-			} , { offset: '95%' } );
-			
-			
-			
-			}
-			
-			counter();
+		
+		    }
+		  }, { offset: '95%' });
+		};
+		
+		counter();
 
 
 	var contentWayPoint = function() {
